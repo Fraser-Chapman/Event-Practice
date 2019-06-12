@@ -1,0 +1,27 @@
+<!Doctype html>
+
+<html>
+
+<head>
+    <title>Practice</title>
+</head>
+
+<body>
+
+<h1><strong id="box">test</strong></h1>
+<button onclick="sendRequest()">send request</button>
+
+    <script>
+        var url = "http://localhost:8080/api/event/1";
+
+        function sendRequest() {
+            var xmlhttp = new XMLHttpRequest;
+            xmlhttp.open("GET", url, false, "portal", "password");
+            xmlhttp.send(null);
+            document.getElementById("box").innerHTML = xmlhttp.responseText;
+            console.log(xmlhttp);
+        }
+    </script>
+
+</body>
+</html>
