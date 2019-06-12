@@ -42,21 +42,7 @@ public class DataBaseRepository {
         } catch (SQLException e) {
             throw new WebApplicationException(HttpStatus.INTERNAL_SERVER_ERROR_500, "Unable to retrieve event");
         } finally {
-            try {
-                resultSet.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            try {
-                statement.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            closeConnection();
         }
         return null;
     }
@@ -78,22 +64,26 @@ public class DataBaseRepository {
         } catch (SQLException e) {
             throw new WebApplicationException(HttpStatus.INTERNAL_SERVER_ERROR_500, "Unable to retrieve user");
         } finally {
-            try {
-                resultSet.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            try {
-                statement.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            closeConnection();
         }
         return null;
+    }
+
+    private void closeConnection() {
+        try {
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
