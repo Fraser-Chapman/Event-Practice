@@ -3,6 +3,8 @@ package com.autotrader.eventspractice.repository;
 import com.autotrader.eventspractice.config.DataBaseConfiguration;
 import com.autotrader.eventspractice.entity.Event;
 import com.autotrader.eventspractice.entity.User;
+import com.autotrader.eventspractice.exceptions.WebApplicationException;
+import org.eclipse.jetty.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -38,8 +40,7 @@ public class DataBaseRepository {
             }
 
         } catch (SQLException e) {
-            System.out.println("oops");
-            e.printStackTrace();
+            throw new WebApplicationException(HttpStatus.INTERNAL_SERVER_ERROR_500, "Unable to retrieve event");
         } finally {
             try {
                 resultSet.close();
@@ -75,8 +76,7 @@ public class DataBaseRepository {
                         resultSet.getString("password"));
             }
         } catch (SQLException e) {
-            System.out.println("oops");
-            e.printStackTrace();
+            throw new WebApplicationException(HttpStatus.INTERNAL_SERVER_ERROR_500, "Unable to retrieve user");
         } finally {
             try {
                 resultSet.close();

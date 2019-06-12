@@ -17,4 +17,5 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	compile group: 'org.eclipse.jetty', name: 'jetty-http', version: '9.4.15.v20190215'
 }
