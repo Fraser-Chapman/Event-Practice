@@ -1,6 +1,7 @@
 package com.autotrader.eventspractice.controller;
 
 import com.autotrader.eventspractice.entity.Event;
+import com.autotrader.eventspractice.entity.Events;
 import com.autotrader.eventspractice.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,9 +21,15 @@ public class EventController {
         this.eventService = eventService;
     }
 
-    @GetMapping(value = "{eventId}", produces = "application/json")
-    @ResponseBody()
+    @GetMapping(path = "{eventId}", produces = "application/json")
+    @ResponseBody
     public Event getEvent(@PathVariable(value = "eventId") int eventId) {
         return eventService.getEvent(eventId);
+    }
+
+    @GetMapping(path = "/", produces = "application/json")
+    @ResponseBody
+    public Events getEvents() {
+        return eventService.getEvents();
     }
 }
