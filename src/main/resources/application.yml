@@ -7,7 +7,6 @@ server:
   port: ${PORT}
 
 spring:
-
   profiles: default, test, local
 
   datasource:
@@ -15,3 +14,8 @@ spring:
     username: 'bootcamp4'
     password: 'OrangeCucumber'
 
+  clients:
+    accounts:
+      -
+        username: 'portal'
+        password: 'password'
