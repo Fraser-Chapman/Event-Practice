@@ -1,5 +1,6 @@
-package com.autotrader.eventspractice;
+package com.autotrader.eventspractice.repository;
 
+import com.autotrader.eventspractice.config.DataBaseConfiguration;
 import com.autotrader.eventspractice.entity.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -56,8 +57,6 @@ public class DataBaseRepository {
                 e.printStackTrace();
             }
         }
-
         return null;
-
     }
 }

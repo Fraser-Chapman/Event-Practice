@@ -1,5 +1,6 @@
-package com.autotrader.eventspractice;
+package com.autotrader.eventspractice.service;
 
+import com.autotrader.eventspractice.repository.DataBaseRepository;
 import com.autotrader.eventspractice.entity.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
