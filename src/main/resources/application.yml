@@ -1,0 +1,17 @@
+spring.application.name: 'eventspractice-api'
+application.name: ${spring.application.name}
+
+PORT: 8080
+
+server:
+  port: ${PORT}
+
+spring:
+
+  profiles: default, test, local
+
+  datasource:
+    url: 'jdbc:mysql://db-workshop.public-dev.zuto.cloud:3306/bootcamp4'
+    username: 'bootcamp4'
+    password: 'OrangeCucumber'
+
