@@ -2,6 +2,7 @@ package com.autotrader.eventspractice.repository;
 
 import com.autotrader.eventspractice.config.DataBaseConfiguration;
 import com.autotrader.eventspractice.entity.Event;
+import com.autotrader.eventspractice.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -39,8 +40,44 @@ public class DataBaseRepository {
         } catch (SQLException e) {
             System.out.println("oops");
             e.printStackTrace();
+        } finally {
+            try {
+                resultSet.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-        finally {
+        return null;
+    }
+
+    public User getUser(int id) {
+
+        try {
+            connection = DriverManager.getConnection(config.getUrl(), config.getUsername(), config.getPassword());
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM Users WHERE id = " + id);
+
+            if (resultSet.next()) {
+                return new User(resultSet.getLong("id"),
+                        resultSet.getString("first_name"),
+                        resultSet.getString("last_name"),
+                        resultSet.getString("email_address"),
+                        resultSet.getString("password"));
+            }
+        } catch (SQLException e) {
+            System.out.println("oops");
+            e.printStackTrace();
+        } finally {
             try {
                 resultSet.close();
             } catch (SQLException e) {
